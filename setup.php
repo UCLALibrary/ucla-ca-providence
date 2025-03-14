@@ -11,6 +11,9 @@ if (getenv('CA_DEBUG') == 'true'){
 
 date_default_timezone_set(getenv('TZ') ?: 'Etc/UTC');
 
+// These are all (?) the variables defined in setup.php-dist, with
+// generic / default values.  These values can be overridden
+// in docker compose env files, or via Helm chart values files.
 $ENV_NAME_TO_DEFAULT_VALUE = [
   'CA_ADMIN_EMAIL' => 'admin@local',
   'CA_ALLOW_AUTOMATIC_UPDATE_OF_DATABASE' => null,
@@ -67,19 +70,27 @@ $ENV_NAME_TO_DEFAULT_VALUE = [
   'CA_USE_CLEAN_URLS' => 0,
 ];
 
+// Create the constant names Providence expects.  For example,
+// CA_APP_CONFIG becomes __CA_APP_CONFIG__.
 foreach ($ENV_NAME_TO_DEFAULT_VALUE as $env_name => $default_value) {
   $ca_config_name = '__' . $env_name . '__';
 
+  // None of the __CA__ constants is defined yet.  For each one,
+  // see if there's an environment variable to use.
   if (!defined($ca_config_name)) {
     $config_value = getenv($env_name);
 
+    // If the environment variable is set, use that value.
     if ($config_value !== false) {
       define($ca_config_name, $config_value);
     }
+    // If no environment variable value to use, if a non-null default was set,
+    // use that value.
     else if ($default_value !== null){
       define($ca_config_name, $default_value);
     }
   }
 }
 
+// Finally, continue with the standard installation process.
 require(__DIR__."/app/helpers/post-setup.php");

@@ -62,4 +62,4 @@ To try a different profile, the old database must be wiped out. Be sure you real
 
 [Login page](http://127.0.0.1:8090/index.php/system/auth/login).
 
-The UI doesn't seem to have a link to the [logout page](http://127.0.0.1:8090/index.php/system/auth/logout).
+The UI links to the [logout page](http://127.0.0.1:8090/index.php/system/auth/logout) in a tiny status bar at the bottom of the page.
