@@ -31,6 +31,9 @@ RUN useradd -c "Special apache app user" -d /var/www --shell=/usr/sbin/nologin "
 
 RUN chown "$APACHE_RUN_USER":"$APACHE_RUN_USER" /var/www/html
 
+# Switch to the custom apache user
+USER "$APACHE_RUN_USER"
+
 # Copy application files to image, ensuring ownership and permissions for apache.
 COPY --chown="$APACHE_RUN_USER":"$APACHE_RUN_USER" . /var/www/html
 
