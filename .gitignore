@@ -1,0 +1,6 @@
+# Ignore everthing in app/tmp, except the supplied .htaccess file(s)
+app/tmp/*
+!app/tmp/.htaccess
+
+# Ignore logs
+/app/log
