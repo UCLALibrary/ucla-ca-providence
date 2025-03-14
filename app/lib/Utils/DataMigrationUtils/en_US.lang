@@ -1,0 +1,20 @@
+#
+# Locale data for data migration tools
+#
+
+# Entity titles
+titles = [
+	Mrs, Ms, Miss, Mr,
+	Professor, Doctor, Dr, Officer, Ofc, 
+	Sister, Monsieur, Congressman, Senator, President, Vice President,
+	Private, PFC, Pvt, CP, CPL, Corporal, Sergeant, Sgt, SSgt, Sapper, Lt, Lieutenant, Colonel,
+	Captain, Cpt, Major, LCdr, Cmdr, Flying Officer, General, Gen, LGen, Lt Gen, Lt General, 
+	F/O, F/Lt, Pilot, Flight Sergeant, LAC, WAAC, Cftsmn, Able Seaman, Trooper, WOI, Gunner,
+	RSM, RQMS, Dispatcher, Lance Corporal
+]
+
+surname_prefixes = [Ab, Af, Ap, Abu, Aït, Al, Ālam, At, Ath, Aust, Bar, Bath, Ben, Bert, Bet, Bint, Da, Das, De, Degli, Del, Dele, Della, Der, Di, Dos, Du, El, Fetch, Fitz, Kil, La, Le, Lille, Lu, Mala, Mellom, Myljom, Na, Ned, Neder, Nic, Ní, Nin, Nord, Norr, Ny, Ó, Ua, Uí, Opp, Upp, Öfver, Ost, Över, Øvste, Öz, Pour, Putra, Putera, Putri, Puteri, Setia, Setya, Stor, Söder, Ter, Ter, Tre, Van, Van, Van, Van, Van, Van, Väst, Väster, Verch, Erch, Vest, Vesle, von, war, zu]
+
+individual_suffixes = [jr, sr, esq, phd]
+
+corporation_suffixes = [incorporated, & co ltd, & co. ltd, co ltd, & co, inc, llc,  co, corp, ltd]
