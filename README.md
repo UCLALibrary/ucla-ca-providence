@@ -1,5 +1,7 @@
 # README: Providence version 2.0
 
+This is a UCLA-customized version of Collective Access (the Providence component).  See [UCLA notes](README_UCLA.md) for details.
+
 ### About CollectiveAccess
 
 CollectiveAccess is collections management and presentation software maintained by Whirl-i-Gig and contributed to by the open-source community. The CollectiveAccess project began in 2003 as a response to the lack of non-commercial, affordable, open-source solutions for digital collections management. Almost two decades later, CollectiveAccess has projects on 5 continents, providing hundreds of institutions with configurable, up-to-date collections management software.
