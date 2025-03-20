@@ -2,7 +2,7 @@
 service: ucla-ca-providence
 
 # Name of the container image.
-image: uclalibrary/ucla-ca-providence
+image: uclalibrary/ucla-ca-providence:1.0.0
 
 # Deploy to these servers.
 servers:
