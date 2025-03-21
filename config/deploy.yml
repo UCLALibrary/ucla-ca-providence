@@ -44,6 +44,30 @@ volumes:
   - ".:/var/www/html"
 
 accessories:
+  providence: 
+    image: uclalibrary/ucla-ca-providence:1.0.0
+    host: t-u-kamalapp01.library.ucla.edu
+    port: 80
+    proxy:
+      ssl: true
+      host: ca-pilot.library.ucla.edu
+      app_port: 80
+      healthcheck:
+        interval: 3
+        path: "/"
+        timeout: 3
+    env:
+      clear:
+        APACHE_RUN_USER: "ca-www-data"
+        APACHE_RUN_GROUP: "ca-www-data" 
+        CA_DB_HOST: "ucla-ca-providence-db"
+        CA_DB_DATABASE: "collectiveaccess"
+        CA_DB_USER: "ca"
+        CA_APP_DISPLAY_NAME: "PILOT Providence"
+      secret:
+        - CA_DB_PASSWORD
+    volumes:
+      - ".:/var/www/html"
   db:
     image: mysql:8.0-oraclelinux8
     host: t-u-kamalapp01.library.ucla.edu
