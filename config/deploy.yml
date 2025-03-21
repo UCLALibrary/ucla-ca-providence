@@ -1,0 +1,82 @@
+# Name of your application. Used to uniquely configure containers.
+service: ucla-ca-providence
+
+# Name of the container image.
+image: uclalibrary/ucla-ca-providence:1.0.1
+
+# Deploy to these servers.
+servers:
+  web:
+    - t-u-kamalapp01.library.ucla.edu
+
+proxy:
+  ssl: true
+  host: ca-pilot.library.ucla.edu
+  app_port: 80
+  healthcheck:
+    interval: 3
+    path: "/"
+    timeout: 3
+
+registry:
+  username: systemsbot
+  password:
+    - DOCKER_REGISTRY_PASSWORD
+
+builder:
+  arch: amd64
+
+env:
+  clear:
+    APACHE_RUN_USER: "ca-www-data"
+    APACHE_RUN_GROUP: "ca-www-data" 
+    CA_DB_HOST: "ucla-ca-providence-db"
+    CA_DB_DATABASE: "collectiveaccess"
+    CA_DB_USER: "ca"
+    CA_APP_DISPLAY_NAME: "PILOT Providence"
+  secret:
+    - CA_DB_PASSWORD
+
+ssh:
+  user: deploy
+
+volumes:
+  - ".:/var/www/html"
+
+accessories:
+  providence: 
+    image: uclalibrary/ucla-ca-providence:1.0.1
+    host: t-u-kamalapp01.library.ucla.edu
+    proxy:
+      ssl: true
+      host: ca-pilot.library.ucla.edu
+      app_port: 80
+      healthcheck:
+        interval: 3
+        path: "/"
+        timeout: 3
+    env:
+      clear:
+        APACHE_RUN_USER: "ca-www-data"
+        APACHE_RUN_GROUP: "ca-www-data" 
+        CA_DB_HOST: "ucla-ca-providence-db"
+        CA_DB_DATABASE: "collectiveaccess"
+        CA_DB_USER: "ca"
+        CA_APP_DISPLAY_NAME: "PILOT Providence"
+      secret:
+        - CA_DB_PASSWORD
+  db:
+    image: mysql:8.0-oraclelinux8
+    host: t-u-kamalapp01.library.ucla.edu
+    port: "127.0.0.1:3306:3306"
+    cmd: "mysqld --character-set-server=UTF8MB4 --innodb_buffer_pool_size=2G --innodb_buffer_pool_instances=2 --log_bin_trust_function_creators=1"
+    env:
+      clear:
+        MYSQL_ROOT_HOST: '%'
+        MYSQL_DATABASE: "collectiveaccess"
+        MYSQL_USER: "ca"
+      secret:
+        - MYSQL_ROOT_PASSWORD
+        - MYSQL_PASSWORD
+    directories:
+      - "mysql_data:/var/lib/mysql"
