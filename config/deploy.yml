@@ -65,8 +65,6 @@ accessories:
         CA_APP_DISPLAY_NAME: "PILOT Providence"
       secret:
         - CA_DB_PASSWORD
-    volumes:
-      - ".:/var/www/html"
   db:
     image: mysql:8.0-oraclelinux8
     host: t-u-kamalapp01.library.ucla.edu
