@@ -47,7 +47,6 @@ accessories:
   providence: 
     image: uclalibrary/ucla-ca-providence:1.0.0
     host: t-u-kamalapp01.library.ucla.edu
-    port: 80
     proxy:
       ssl: true
       host: ca-pilot.library.ucla.edu
