@@ -1,3 +1,0 @@
-Contact-NAME : John Smith
-Source-ORGANIZATION : The Chronicle
-BAG-IDENTIFIER : BAGXX001
