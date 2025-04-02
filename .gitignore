@@ -3,9 +3,11 @@
 # in that directory as we currently wipe all that out with each upgrade.
 ##########
 
-# Ignore everthing in app/tmp, except the supplied .htaccess file(s)
+# Ignore everthing in app/tmp, except the few files supplied with the official release.
 ucla_providence/app/tmp/*
 !ucla_providence/app/tmp/.htaccess
+!ucla_providence/app/tmp/.keep
+!ucla_providence/app/tmp/purifier/.htaccess
 
 # Ignore logs
 ucla_providence/app/log
