@@ -36,3 +36,6 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.yaml-data.outputs.data }}
+          build-args: |
+            APACHE_RUN_USER="ca-www-data"
+            APACHE_RUN_GROUP="ca-www-data"
