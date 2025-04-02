@@ -9,7 +9,7 @@ services:
     env_file:
       - .docker-compose_providence.env
     volumes:
-      - .:/var/www/html
+      - ./ucla_providence:/var/www/html
     ports:
       - "8090:80"
     depends_on:
