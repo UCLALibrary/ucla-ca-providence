@@ -35,7 +35,12 @@ RUN chown "$APACHE_RUN_USER":"$APACHE_RUN_USER" /var/www/html
 USER "$APACHE_RUN_USER"
 
 # Copy application files to image, ensuring ownership and permissions for apache.
-COPY --chown="$APACHE_RUN_USER":"$APACHE_RUN_USER" . /var/www/html
+# This copies only our pre-built set of application code, not supporting files
+# only needed for building or deploying.
+COPY --chown="$APACHE_RUN_USER":"$APACHE_RUN_USER" ./ucla_providence /var/www/html
 
 # Expose the default HTTP port.
 EXPOSE 80
+
+# No explicit ENTRYPOINT or CMD; the base container runs
+# /usr/local/bin/docker-php-entrypoint which runs apache2-foreground.

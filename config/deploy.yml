@@ -2,7 +2,7 @@
 service: ucla-ca-providence
 
 # Name of the container image.
-image: uclalibrary/ucla-ca-providence:1.0.2
+image: uclalibrary/ucla-ca-providence:1.0.3
 
 # Deploy to these servers.
 servers:
@@ -40,12 +40,9 @@ env:
 ssh:
   user: deploy
 
-volumes:
-  - ".:/var/www/html"
-
 accessories:
   providence: 
-    image: uclalibrary/ucla-ca-providence:1.0.2
+    image: uclalibrary/ucla-ca-providence:1.0.3
     host: t-u-kamalapp01.library.ucla.edu
     proxy:
       ssl: true

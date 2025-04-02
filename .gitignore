@@ -1,6 +1,21 @@
-# Ignore everthing in app/tmp, except the supplied .htaccess file(s)
-app/tmp/*
-!app/tmp/.htaccess
+##########
+# Application files are all in ucla_providence, but don't put .gitignore
+# in that directory as we currently wipe all that out with each upgrade.
+##########
+
+# Ignore everthing in app/tmp, except the few files supplied with the official release.
+ucla_providence/app/tmp/*
+!ucla_providence/app/tmp/.htaccess
+!ucla_providence/app/tmp/.keep
+!ucla_providence/app/tmp/purifier/.htaccess
 
 # Ignore logs
-/app/log
+ucla_providence/app/log
+
+##########
+# Local files
+##########
+
+# Ignore secrets, except for kamal "secrets" which really aren't
+*secret*
+!.kamal/secrets
