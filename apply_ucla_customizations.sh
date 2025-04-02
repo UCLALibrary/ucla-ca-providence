@@ -20,5 +20,13 @@ for FILE in "${DELETE_FILES[@]}"; do
   rm "${TARGET}/${FILE}"
 done
 
+# Create media/collectiveaccess, which doesn't exist by default
+# but seems to be expected, maybe created during fresh installation only?
+# media exists, just not media/collectiveaccess
+if [ ! -d "${TARGET}/media/collectiveaccess" ]; then
+  mkdir "${TARGET}/media/collectiveaccess"
+fi
+
 # Copy UCLA-specific customizations into the main application directory.
 cp -pr "${SOURCE}"/* "${TARGET}"/
+
