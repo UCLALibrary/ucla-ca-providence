@@ -17,7 +17,9 @@ DELETE_FILES=(
     Vagrantfile.focal
 )
 for FILE in "${DELETE_FILES[@]}"; do
-  rm "${TARGET}/${FILE}"
+  if [ -f "${TARGET}/${FILE}" ]; then
+    rm "${TARGET}/${FILE}"
+  fi
 done
 
 # Create media/collectiveaccess, which doesn't exist by default
