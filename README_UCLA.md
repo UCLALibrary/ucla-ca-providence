@@ -38,7 +38,7 @@ Useful for restarting Apache
 1. Build and start the system as above.
 2. Visit the [installation page](127.0.0.1:8090/install).
 3. Enter your email address for the local administrator account.
-4. Choose an installation profile (probably `[Standard] PBCore v1.2 REVISED 2013`)
+4. Choose an installation profile (probably `UCLA FTVA`)
 5. Click "Begin installation".
 
 Installation takes a couple of minutes, as the database is built.  When done, a randomly-created administrator password
@@ -57,6 +57,28 @@ To try a different profile, the old database must be wiped out. Be sure you real
 2. Delete the docker database volume: `docker volume rm ucla-ca-providence_db`
 3. Start up the system.
 4. Run the installation process as described above, starting at step 2.
+
+### Exporting and importing configuration via profiles
+
+CA provides utilities for exporting and importing configuration defined in installation profiles, available in `support/bin/caUtils`.
+
+#### Exporting configuration
+
+To export configuration, run: `support/bin/caUtils export-profile -t TIMESTAMP -o ./install/profiles/xml/custom_export.xml`
+
+Parameters used:
+
+* -t: optional timestamp parameter. You can get the current timestamp with `date +%s` (if running a local dockerized development setup, `docker compose exec providence date +%s`).
+
+* -o: output file destination. The provided example will save the output file in the folder where it will be expected by the configuration import. The file name can be changed as desired.
+
+#### Importing configuration
+
+To import configuration, run: `support/bin/caUtils update-installation-profile -n custom_export.xml`
+
+Parameters used:
+
+* -n: the filename of the configuration profile, which should be in the folder `install/profiles/xml/`.
 
 ## Login and logout
 
