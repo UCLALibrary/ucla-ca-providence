@@ -19,3 +19,6 @@ ucla_providence/app/log
 # Ignore secrets, except for kamal "secrets" which really aren't
 *secret*
 !.kamal/secrets
+
+# Ignore database dumps
+*.gz

@@ -18,6 +18,10 @@ RUN docker-php-ext-install bcmath gd gmp intl mysqli opcache zip && \
     docker-php-ext-enable bcmath gd gmp intl mysqli opcache zip
 # TODO: configure / enable opcache, see https://laravel-news.com/php-opcache-docker
 
+# Install imagemagick, poppler-utils, and ghostscript, all of which apparently are needed for PDF
+# support.  # poppler-utils provides pdf info but not viewing.
+RUN apt-get install --no-install-recommends -y graphicsmagick ghostscript poppler-utils
+
 # The application will be placed here, apache's default directory in this base image.
 WORKDIR /var/www/html
 
